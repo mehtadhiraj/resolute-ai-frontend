@@ -13,7 +13,8 @@ class Register extends React.Component{
             email: "",
             gender: "",
             dob: "",
-            image: []
+            image: [],
+            message: null
         }
     }
 
@@ -31,16 +32,14 @@ class Register extends React.Component{
 
     handleSubmit = (event)=>{
         event.preventDefault();
-        console.log(this.state);
-        // const formData = new FormData();
-        // for(let x = 0; x < this.state.image.length; x++) {
-        //     formData.append('file', this.state.image[x]);
-        // }
-        // console.log(formData);
+        // console.log(this.state);
         axios.post(API_URL+"register", this.state)
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 // this.props.loginFunction(response.data.token);
+                this.setState({
+                    message: "Registeref Succesfully"
+                })
             })
             .catch(error => {
                 console.log(error);
@@ -48,7 +47,13 @@ class Register extends React.Component{
     
         this.setState({
             username: "",
-            password: ""
+            password: "",
+            name: "",
+            email: "",
+            gender: "",
+            dob: "",
+            image: [],
+            message: "Registeref Succesfully"
         })
     }
     render(){
@@ -84,6 +89,11 @@ class Register extends React.Component{
                     <Capture pushImage={ this.pushImage } image={ this.state.image }/>  <br/><br/>
                     <button type="submit">Submit</button>
                 </form>
+                <h1>
+                    <strong>
+                        {this.state.message}
+                    </strong>
+                </h1>
             </div>
         )
     }
