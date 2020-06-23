@@ -10,26 +10,29 @@ import { getToken } from "./services/constants";
 import UserHome from './Components/Users/UserHome';
 import AdminHome from "./Components/Admin/AdminHome";
 import jwtDecode from 'jwt-decode';
-// import history from './services/history';
 
 class App extends React.Component{
   constructor(props){
     super(props);
+    // Set initial state parameters to null
     let token = getToken();
     let login = token ? true : false;
     let userDetails = null;
     let role = null;
     let images = [];
     let userArray = [];
+    // If token is present user is logged in, decode token to get user details.
     if(token){
         userDetails = this.getUserDetails(token);
         role = userDetails.role;
+        // If admin get array of all users else get users all images.
         if(role === 'admin'){
           userArray = userDetails.userArray;
         }else{
           images = userDetails.images;
         }
     }
+    //Set the state with all values initialized above.
     this.state = {
       login,
       role,
@@ -39,11 +42,13 @@ class App extends React.Component{
     }
   }
 
+  // Get user details by decodeing token
   getUserDetails = (token)=>{
     return jwtDecode(token);
   }
 
   handleLogin = (token)=>{
+    //On login update statw with user details
     let userDetails = this.getUserDetails(token);
     let userArray = [];
     let images = [];
@@ -67,7 +72,8 @@ class App extends React.Component{
       login: false,
       userDetails: null,
       role: null,
-      images: []
+      images: [],
+      userArray: []
     })
     localStorage.removeItem('jwtToken');
   }

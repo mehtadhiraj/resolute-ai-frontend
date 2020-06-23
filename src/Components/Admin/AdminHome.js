@@ -18,6 +18,7 @@ function AdminHome(props){
                         <th>Role</th>
                     </tr>
                     {
+                        // Display users detials in row
                         props.userArray.map((user, x)=>{
                             return(
                                 <tr key={x+1}>

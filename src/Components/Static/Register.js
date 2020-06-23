@@ -36,7 +36,6 @@ class Register extends React.Component{
         axios.post(API_URL+"register", this.state)
             .then(response => {
                 // console.log(response);
-                // this.props.loginFunction(response.data.token);
                 this.setState({
                     message: "Registeref Succesfully"
                 })

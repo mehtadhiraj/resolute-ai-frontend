@@ -7,6 +7,7 @@ function Navbar(props){
             Navbar   &nbsp;&nbsp;
             <Link to='/'>Home</Link> &nbsp; &nbsp;
             {
+                // If loggedin show logout else show login and register
                 props.loginState ? 
                     <>
                         <Link to='/login' onClick={props.logout}>Logout</Link>&nbsp;&nbsp;

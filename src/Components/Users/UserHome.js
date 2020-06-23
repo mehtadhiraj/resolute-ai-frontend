@@ -20,6 +20,7 @@ function UserHome(props){
             </p>
             <div>
                 {
+                    // Display all the user images
                     props.images.map((image, x)=>{
                         return(
                             <img key={x} src={image} alt={"Image "+x} width="180px" height="100px" />

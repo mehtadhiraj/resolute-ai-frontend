@@ -25,6 +25,7 @@ class Login extends React.Component{
         axios.post(API_URL+"login", { username, password })
             .then(response => {
                 // console.log(response);
+                // change the state on  login
                 this.props.loginFunction(response.data.token);
             })
             .catch(error => {
