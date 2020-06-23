@@ -10,6 +10,7 @@ function AdminHome(props){
                 <tbody>
                     <tr key={0}>
                         <th>ID</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Gender</th>
@@ -23,6 +24,9 @@ function AdminHome(props){
                             return(
                                 <tr key={x+1}>
                                     <td>{user.id}</td>
+                                    <td>
+                                        <img src={"http://localhost:3001/uploads/"+user.id.toString()+"-"+user.username+"/image0.jpeg"} alt={"User image "+parseInt(x+1).toString()} width="80px" height="40px"/>
+                                    </td>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.gender}</td>
